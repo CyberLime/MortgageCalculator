@@ -6,6 +6,7 @@
   --s500: hsl(200, 26%, 54%);
   --s700: hsl(200, 24%, 40%);
   --s900: hsl(202, 55%, 16%);
+  --s1100: hsl(201, 70%, 9%);
 }
 
 @font-face {
@@ -47,7 +48,7 @@ main {
 
 label {
   display: block;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .mortgage-calculator {
@@ -56,7 +57,7 @@ label {
 
   width: 95vw;
   max-width: 960px;
-  height: 520px;
+  height: fit-content;
 
   border-radius: 20px;
   box-shadow: -20px 40px 30px 0 hsl(204, 66%, 87%);
@@ -137,6 +138,10 @@ label {
 
   color: var(--s700);
   font-weight: 700;
+
+  cursor: pointer;
+  
+  transition: 0.2s ease-out;
 }
 
 #calculator .input .inside.right {
@@ -145,6 +150,22 @@ label {
   margin-right: 1px;
 
   border-radius: 0 4px 4px 0;
+}
+
+#calculator .input p {
+  display: none;
+
+  position: absolute;
+
+  color: var(--red);
+  font-size: 12px;
+
+  margin-top: 5px;
+}
+
+#calculator .input input:focus ~ .inside {
+  color: var(--s900);
+  background-color: var(--lime);
 }
 
 #calculator .input input {
@@ -169,6 +190,10 @@ label {
   cursor: pointer;
 
   transition: 0.2s ease-out;
+}
+
+#calculator .input #amount {
+  padding-left: 55px;
 }
 
 #calculator .input input:hover {
@@ -286,7 +311,7 @@ label {
   border: none;
   border-radius: 45px;
 
-  margin-top: 30px;
+  margin-top: 45px;
 
   background-color: var(--lime);
 
@@ -303,7 +328,7 @@ label {
   opacity: 0.85;
 }
 
-#result {
+.result {
   box-sizing: border-box;
 
   display: flex;
@@ -322,10 +347,67 @@ label {
   background-color: var(--s900);
 }
 
-#result h1 {
+.result h1 {
   color: white;
 }
 
-#result p {
+.result p {
   color: var(--s500);
+
+  line-height: 1.5em;
+}
+
+.result.hidden {
+  display: none;
+}
+
+.result.ready {
+  justify-content: start;
+  align-items: start;
+  text-align: unset;
+
+  padding: 30px;
+}
+
+.result .price {
+  box-sizing: border-box;
+  overflow: hidden;
+
+  width: 100%;
+  height: fit-content;
+
+  background-color: var(--s1100);
+
+  border-top: solid 3px var(--lime);
+  border-radius: 5px;
+
+  margin-top: 20px;
+  padding: 0 25px;
+}
+
+.result .price p {
+  margin-top: 25px;
+}
+
+.result .price h2 {
+  font-size: 45px;
+  color: var(--lime);
+}
+
+.result .price div {
+  height: 1px;
+  width: 100%;
+
+  background-color: var(--s700);
+
+  margin-top: 25px;
+}
+
+.result .price h3 {
+  color: white;
+  
+  margin-top: 6px;
+  margin-bottom: 25px;
+
+  font-size: 22px;
 }

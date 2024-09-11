@@ -14,27 +14,30 @@
           <!-- ~ Header ~ -->
           <div class="header">
             <h1>Mortgage Calculator</h1>
-            <button type="button">Clear All</button>
+            <button type="button" class="clear">Clear All</button>
           </div>
 
           <!-- ~ Amount ~ -->
           <div class="amount input">
             <label>Mortgage Amount</label>
-            <div class="inside left">£</div>
-            <input>
+            <input id="amount">
+            <label for="amount" class="inside left">£</label>
+            <p>This field is required</p>
           </div>
 
           <!-- ~ Term and interest ~ -->
           <div class="term-interest">
             <div class="term input">
               <label>Mortgage Term</label>
-              <div class="inside right">years</div>
-              <input>
+              <input id="term">
+              <label for="term" class="inside right">years</label>
+              <p>This field is required</p>
             </div>
             <div class="interest input">
               <label>Interest Rate</label>
-              <div class="inside right">%</div>
-              <input>
+              <input id="rate">
+              <label for="rate" class="inside right">%</label>
+              <p>This field is required</p>
             </div>
           </div>
 
@@ -55,6 +58,7 @@
               </div>
               <h2>Interest Only</h2>
             </label>
+            <p>This field is required</p>
           </div>
 
           <button id="submit">
@@ -63,7 +67,7 @@
           </button>
         </form>
 
-        <section id="result">
+        <section class="result">
           <img src="assets/images/illustration-empty.svg">
           <h1>Results shown here</h1>
           <p>
@@ -71,6 +75,23 @@
             monthly repayments would be.
           </p>
         </section>
+
+        <section class="result ready hidden">
+          <h1>Your results</h1>
+          <p>
+            Your results Your results are shown below based on the information you
+            provided. To adjust the results, edit the form and click “calculate
+            repayments” again.
+          </p>
+          <div class="price">
+            <p>Your monthly repayments</p>
+            <h2>£1,797.74</h2>
+            <div></div>
+            <p>Total you'll repay over the term</p>
+            <h3>£539,322.94</h3>
+          </div>
+        </section>
+        <script src="/dist/app.js" defer></script>
       </div>
     </main>
 
@@ -80,9 +101,7 @@
 
     <!-- Completed results start -->
 
-    <!-- Your results Your results are shown below based on the information you
-    provided. To adjust the results, edit the form and click “calculate
-    repayments” again. Your monthly repayments Total you'll repay over the term -->
+    <!--     -->
 
     <!-- Completed results end -->
   </body>
