@@ -62,32 +62,41 @@ function formSubmitHandler(event) {
     const rate = document.getElementById("rate");
     const repayment = document.getElementById("repayment");
     const interest = document.getElementById("interest");
+    const inputs = document.querySelectorAll(".input");
     if (!amount.value ||
         !term.value ||
         !rate.value ||
         (!repayment.checked && !interest.checked)) {
         if (!amount.value) {
-            // ...assign an error class
+            inputs[0].className = "amount input error";
         }
         else {
+            inputs[0].className = "amount input";
         }
         if (!term.value) {
-            // ...assign an error class
+            inputs[1].className = "term input error";
         }
         else {
+            inputs[1].className = "term input";
         }
         if (!rate.value) {
-            // ...assign an error class
+            inputs[2].className = "interest input error";
         }
         else {
+            inputs[2].className = "interest input";
         }
         if (!repayment.checked && !interest.checked) {
-            // ...assign an error class (other from those on top)
+            inputs[3].className = "type input error";
         }
         else {
+            inputs[3].className = "type input";
         }
         return;
     }
+    inputs[0].className = "amount input";
+    inputs[1].className = "term input";
+    inputs[2].className = "interest input";
+    inputs[3].className = "type input";
     const monthly = document.querySelector(".ready > .price > h2");
     const total = document.querySelector(".ready > .price > h3");
     const sections = document.querySelectorAll(".result");

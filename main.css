@@ -111,6 +111,20 @@ label {
   position: relative;
 }
 
+#calculator .input.error .inside {
+  background-color: var(--red);
+
+  color: white;
+}
+
+#calculator .input.error input {
+  border-color: var(--red)
+}
+
+#calculator .input.error p {
+  display: block;
+}
+
 #calculator .input label {
   color: var(--s700);
   font-size: 14px;
