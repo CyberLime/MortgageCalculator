@@ -305,7 +305,8 @@ label {
   justify-content: center;
   gap: 10px;
 
-  width: 270px;
+  width: 100%;
+  max-width: 270px;
   height: 45px;
 
   border: none;
@@ -410,4 +411,22 @@ label {
   margin-bottom: 25px;
 
   font-size: 22px;
+}
+
+@media (max-width: 685px) {
+  .mortgage-calculator {
+    flex-wrap: wrap;
+    border-radius: 0;
+    width: 100vw
+  }
+
+  #calculator {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .result {
+    width: 100%;
+    border-radius: 0;
+  }
 }
