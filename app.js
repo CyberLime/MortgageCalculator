@@ -119,8 +119,8 @@ function calculateMortgage(a, t, r) {
     const repayment = document.getElementById("repayment");
     const interest = document.getElementById("interest");
     if (repayment.checked) {
-        return ((((amount * rate) / 1200) * (1 + rate / 1200) ** (term * 12)) /
-            ((1 + rate / 1200) ** (term * 12) - 1)).toFixed(2);
+        return ((((amount * rate) / 1200) * Math.pow((1 + rate / 1200), (term * 12))) /
+            (Math.pow((1 + rate / 1200), (term * 12)) - 1)).toFixed(2);
     }
     else if (interest.checked) {
         return ((amount * rate) / 1200).toFixed(2);
@@ -133,4 +133,3 @@ const formatter = Intl.NumberFormat("en-US", {
 const amountFormatter = Intl.NumberFormat("en-US", {
     style: "decimal",
 });
-console.log("e");

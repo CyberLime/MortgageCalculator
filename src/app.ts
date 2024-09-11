@@ -172,5 +172,3 @@ const formatter = Intl.NumberFormat("en-US", {
 const amountFormatter = Intl.NumberFormat("en-US", {
   style: "decimal",
 });
-
-console.log("e")
