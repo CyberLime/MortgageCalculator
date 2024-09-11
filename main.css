@@ -10,13 +10,322 @@
 
 @font-face {
   /* 500 */
-  font-family: "Plus Jakarta", sans-serif;
+  font-family: "Plus Jakarta";
   src: url("./assets/fonts/static/PlusJakartaSans-Medium.ttf");
+  font-weight: 500;
 }
 
 @font-face {
   /* 700 */
-  font-family: "Plus Jakarta", sans-serif;
+  font-family: "Plus Jakarta";
   src: url("./assets/fonts/static/PlusJakartaSans-Bold.ttf");
+  font-weight: 700;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Plus Jakarta", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+
+  background-color: var(--s100);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+.mortgage-calculator {
+  display: flex;
+  justify-content: space-between;
+
+  width: 95vw;
+  max-width: 960px;
+  height: 520px;
+
+  border-radius: 20px;
+  box-shadow: -20px 40px 30px 0 hsl(204, 66%, 87%);
+
+  overflow: hidden;
+
+  background-color: white;
+}
+
+#calculator {
+  box-sizing: border-box;
+
+  width: 50%;
+
+  padding: 30px;
+
+  background-color: white;
+}
+
+#calculator .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#calculator .header h1 {
+  color: var(--s900);
+  font-size: 26px;
+}
+
+#calculator .header button {
+  background: none;
+  border: none;
+  outline: none;
+
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  color: var(--s700);
+
+  cursor: pointer;
+
+  transition: 0.2s ease-out;
+}
+
+#calculator .header button:hover {
+  color: var(--s900);
+}
+
+#calculator .input {
+  position: relative;
+}
+
+#calculator .input label {
+  color: var(--s700);
+  font-size: 14px;
+}
+
+#calculator .input .inside {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  height: 38px;
+
+  margin-bottom: 1px;
+  margin-left: 1px;
+  padding: 0 15px;
+
+  border-radius: 4px 0 0 4px;
+
+  background-color: var(--s100);
+
+  color: var(--s700);
+  font-weight: 700;
+}
+
+#calculator .input .inside.right {
+  right: 0;
+
+  margin-right: 1px;
+
+  border-radius: 0 4px 4px 0;
+}
+
+#calculator .input input {
+  box-sizing: border-box;
+
+  border: solid 1px var(--s700);
+  border-radius: 5px;
+
+  outline: none;
+
+  margin-top: 10px;
+  padding: 0 15px;
+
+  height: 40px;
+  width: 100%;
+
+  color: var(--s900);
+  font-weight: 700;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease-out;
+}
+
+#calculator .input input:hover {
+  border-color: var(--s900);
+}
+
+#calculator .input input:focus {
+  border-color: var(--lime);
+
+  cursor: text;
+}
+
+#calculator .term-interest {
+  display: flex;
+  justify-content: space-between;
+}
+
+#calculator .term-interest div {
+  width: 45%;
+}
+
+#calculator .type .radio {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  border: solid 1px var(--s700);
+  border-radius: 5px;
+
+  outline: none;
+
+  margin-top: 10px;
+  padding: 0 15px;
+
+  height: 40px;
+  width: 100%;
+
+  color: var(--s900);
+  font-weight: 700;
+
+  cursor: pointer;
+  
+  transition: 0.2s ease-out;
+}
+
+#calculator .type .radio:hover {
+  border-color: var(--lime);
+
+  cursor: pointer;
+}
+
+#calculator .type .radio-type {
+  display: none;
+}
+
+#calculator .type .radio .custom-radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 14px;
+  height: 14px;
+
+  border: solid 1px var(--s900);
+  border-radius: 50%;
+  
+  transition: 0.2s ease-out;
+}
+
+#calculator .type .radio .custom-radio-container div {
+  display: none;
+
+  width: 10px;
+  height: 10px;
+
+  background-color: var(--lime);
+
+  border-radius: 50%;
+
+  transition: 0.2s ease-out;
+}
+
+#calculator .type .radio h2 {
+  font-size: 16px;
+}
+
+#calculator .type #repayment:checked ~ #r-label,
+#calculator .type #interest:checked ~ #i-label,
+#calculator .type #repayment:checked ~ #r-label .custom-radio-container,
+#calculator .type #interest:checked ~ #i-label .custom-radio-container {
+  border: solid 1px var(--lime);
+}
+
+#calculator .type #repayment:checked ~ #r-label,
+#calculator .type #interest:checked ~ #i-label {
+  background-color: hsla(61, 70%, 52%, 0.2);
+}
+
+#calculator .type #repayment:checked ~ #r-label .custom-radio-container div,
+#calculator .type #interest:checked ~ #i-label .custom-radio-container div {
+  display: block;
+}
+
+#calculator #submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 270px;
+  height: 45px;
+
+  border: none;
+  border-radius: 45px;
+
+  margin-top: 30px;
+
+  background-color: var(--lime);
+
+  font-weight: 700;
+  color: var(--s900);
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease-out;
+}
+
+#calculator #submit:hover {
+  opacity: 0.85;
+}
+
+#result {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+
+  width: 50%;
+
+  padding: 0 20px;
+
+  border-bottom-left-radius: 60px;
+
+  background-color: var(--s900);
+}
+
+#result h1 {
+  color: white;
+}
+
+#result p {
+  color: var(--s500);
+}
