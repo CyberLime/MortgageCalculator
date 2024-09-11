@@ -117,7 +117,6 @@ function formSubmitHandler(event: Event): void {
     return;
   }
 
-  
   inputs[0].className = "amount input";
   inputs[1].className = "term input";
   inputs[2].className = "interest input";
