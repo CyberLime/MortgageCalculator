@@ -325,6 +325,7 @@ label {
   max-width: 270px;
   height: 45px;
 
+  outline: none;
   border: none;
   border-radius: 45px;
 
