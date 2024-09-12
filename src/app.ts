@@ -64,11 +64,18 @@ function clearHandler(): void {
   const repayment = document.getElementById("repayment")! as HTMLInputElement;
   const interest = document.getElementById("interest")! as HTMLInputElement;
 
+  const sections = document.querySelectorAll(
+    ".result"
+  )! as NodeListOf<HTMLElement>;
+
   amount.value = "";
   term.value = "";
   rate.value = "";
   repayment.checked = false;
   interest.checked = false;
+
+  sections[0].className = "result not-ready";
+  sections[1].className = "result ready hidden";
 }
 
 function formSubmitHandler(event: Event): void {
@@ -83,7 +90,11 @@ function formSubmitHandler(event: Event): void {
   const inputs = document.querySelectorAll(
     ".input"
   )! as NodeListOf<HTMLDivElement>;
-  
+
+  const sections = document.querySelectorAll(
+    ".result"
+  )! as NodeListOf<HTMLElement>;
+
   if (
     !amount.value ||
     !term.value ||
@@ -114,6 +125,9 @@ function formSubmitHandler(event: Event): void {
       inputs[3].className = "type input";
     }
 
+    sections[0].className = "result not-ready";
+    sections[1].className = "result ready hidden";
+
     return;
   }
 
@@ -128,22 +142,14 @@ function formSubmitHandler(event: Event): void {
   const total = document.querySelector(
     ".ready > .price > h3"
   )! as HTMLHeadingElement;
-  const sections = document.querySelectorAll(
-    ".result"
-  )! as NodeListOf<HTMLElement>;
 
   const repayments = calculateMortgage(amount.value, term.value, rate.value);
 
   monthly.innerHTML = formatter.format(+repayments);
   total.innerHTML = formatter.format(+repayments * +term.value * 12);
 
-  sections.forEach((e, i) => {
-    if (i == 0) {
-      e.classList.add("hidden");
-    } else {
-      e.classList.remove("hidden");
-    }
-  });
+  sections[0].className = "result not-ready hidden";
+  sections[1].className = "result ready";
 }
 
 function calculateMortgage(a: string, t: string, r: string): string | void {

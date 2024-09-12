@@ -49,11 +49,14 @@ function clearHandler() {
     const rate = document.getElementById("rate");
     const repayment = document.getElementById("repayment");
     const interest = document.getElementById("interest");
+    const sections = document.querySelectorAll(".result");
     amount.value = "";
     term.value = "";
     rate.value = "";
     repayment.checked = false;
     interest.checked = false;
+    sections[0].className = "result not-ready";
+    sections[1].className = "result ready hidden";
 }
 function formSubmitHandler(event) {
     event.preventDefault();
@@ -63,6 +66,7 @@ function formSubmitHandler(event) {
     const repayment = document.getElementById("repayment");
     const interest = document.getElementById("interest");
     const inputs = document.querySelectorAll(".input");
+    const sections = document.querySelectorAll(".result");
     if (!amount.value ||
         !term.value ||
         !rate.value ||
@@ -91,6 +95,8 @@ function formSubmitHandler(event) {
         else {
             inputs[3].className = "type input";
         }
+        sections[0].className = "result not-ready";
+        sections[1].className = "result ready hidden";
         return;
     }
     inputs[0].className = "amount input";
@@ -99,18 +105,11 @@ function formSubmitHandler(event) {
     inputs[3].className = "type input";
     const monthly = document.querySelector(".ready > .price > h2");
     const total = document.querySelector(".ready > .price > h3");
-    const sections = document.querySelectorAll(".result");
     const repayments = calculateMortgage(amount.value, term.value, rate.value);
     monthly.innerHTML = formatter.format(+repayments);
     total.innerHTML = formatter.format(+repayments * +term.value * 12);
-    sections.forEach((e, i) => {
-        if (i == 0) {
-            e.classList.add("hidden");
-        }
-        else {
-            e.classList.remove("hidden");
-        }
-    });
+    sections[0].className = "result not-ready hidden";
+    sections[1].className = "result ready";
 }
 function calculateMortgage(a, t, r) {
     const amount = +a;
